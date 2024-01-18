@@ -33,17 +33,33 @@
                 document.getElementById('is_banner_animated').innerText = 'Is Banner Animated: ' + data.banner.is_animated;
                 document.getElementById('banner_color1').innerText = 'Banner Colors: ' + data.banner.color;
                 document.getElementById('Discord_profile_link').innerText = 'Discord Profile link: https://discordapp.com/users/' + data.id;
-  
+                let date = new Date(data.created_at);
+                let options = { year: 'numeric', month: 'short', day: 'numeric' };
+                let formattedDate = date.toLocaleDateString('en-CA', options);
+                document.getElementById('created_at').innerText = 'Created At: ' + formattedDate;
+
                 var user_banner_color = data.banner.color;
 
-            // Change box color with banner user color
-            var boxElement = document.querySelector('.box');
-            boxElement.style.backgroundColor = user_banner_color;
-        })
-        .catch(error => console.error('Error:', error));
-}
+                // Change box color with banner user color
+                var boxElement = document.querySelector('.box');
+                boxElement.style.backgroundColor = user_banner_color;
+                var avatarLink = data.avatar.link;
+                document.querySelector('.profil-logo img').src = avatarLink;
+                var bannerLink = data.banner.link;
+                document.querySelector('.banner-img').style.backgroundImage = 'url(' + bannerLink + ')';
+                var bannerColor = data.banner.color;
+                document.querySelector('.box').style.backgroundColor = bannerColor;
+                var userTag = data.tag;
+                document.querySelector('.profile-body .tag').innerText = userTag;
+                var bannerColor = data.banner.color;
+                document.querySelector('.nitro-card').style.background = bannerColor;
+                var bannerColor = data.banner.color;
+                document.querySelector('.profil-logo').style.backgroundColor = bannerColor;
+                document.querySelector('.date').innerText = formattedDate;
 
-
+            })
+            .catch(error => console.error('Error:', error));
+    }
 </script>
 
 <body>
@@ -77,7 +93,77 @@
         <div class="is_banner_animated" id="is_banner_animated">Banner ID: </div>
         <div class="banner_color1" id="banner_color1">Banner Colors: </div>
         <div class="Discord_profile_link" id="Discord_profile_link">Discord Profile link: </div>
+        <div class="created_at" id="created_at">Created At: </div>
     </div>
+
+
+    <div class="card-container">
+        <!-- First Card -->
+        <div class="card nitro-card">
+            <div class="card-header">
+                <div style="background: url('./assets/img/banner.gif')" class="banner-img"></div>
+            </div>
+            <div class="card-body">
+                <div class="profile-header">
+                    <div class="profil-logo">
+                        <img
+                            src="https://cdn.discordapp.com/avatars/643945264868098049/c6a249645d46209f337279cd2ca998c7.webp?size=1024&format=webp&width=0&height=256" />
+
+                    </div>
+                </div>
+                <div class="profile-body">
+                    <div class="tag">
+                        discord<span></span>
+                    </div>
+                    <hr />
+                    <div class="basic-infos">
+                        <div class="category-title">About Me</div>
+                        <p>
+                            <b>Sorry we can't have that information.</b>
+                        </p>
+                    </div>
+                    <div class="basic-infos">
+                        <div class="category-title">Discord Member Since</div>
+                        <div class="date">
+                            <p>Jun 14, 2017
+                        </div>
+                    </div>
+
+                    <div class="note">
+                        <div class="category-title">Note</div>
+                        <textarea placeholder="Click to add a note"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./assets/js/demo.js">
+            window.onload = function () {
+                var avatarLink = document.getElementById('avatar_link').innerText;
+                document.querySelector('.profil-logo img').src = avatarLink;
+            }
+        </script>
+<div class="credit">Credit:</div>
+
+<div class="credit1">
+    <div class="Sybrax">
+        <img src="https://avatars.githubusercontent.com/u/45593750?v=4">
+        <div class="name"> <a href="https://github.com/Sybrax">Sybrax</a> </div>
+    </div>
+    <div class="Discord_Card"> 
+        <a href="https://github.com/Sybrax/Discord-User-Card">Discord User Card Template </a>
+    </div>
+</div>
+
+<div class="credit1">
+    <div class="mesalytic">
+        <img src="https://avatars.githubusercontent.com/u/43297230?v=4">
+        <div class="name"> <a href="https://github.com/mesalytic">mesalytic</a> </div>
+    </div>
+    <div class="API"> 
+        <a href="https://github.com/mesalytic/discord-lookup-api">Discord Lookup API </a>
+    </div>
+</div>
+
 </body>
 
 </html>
