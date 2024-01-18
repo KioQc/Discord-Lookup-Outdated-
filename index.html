@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Lookup</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="logo.ico">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<script>
+
+    function getUserInfo() {
+        var userId = document.getElementById('your-input-field-id').value;
+        var apiUrl = 'https://discordlookup.mesavirep.xyz/v1/user/' + userId;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('user_id').innerText = 'User ID: ' + data.id;
+                document.getElementById('tag').innerText = 'Tag: ' + data.tag;
+                document.getElementById('badge').innerText = 'Badge: ' + data.badges;
+                document.getElementById('avatar_id').innerText = 'Avatar ID: ' + data.avatar.id;
+                document.getElementById('avatar_link').innerText = 'Avatar Link: ' + data.avatar.link;
+                document.getElementById('is_avatar_animated').innerText = 'Is Avatar Animated: ' + data.avatar.is_animated;
+                document.getElementById('banner_id').innerText = 'Banner ID: ' + data.banner.id;
+                document.getElementById('banner_link').innerText = 'Banner Link: ' + data.banner.link;
+                document.getElementById('is_banner_animated').innerText = 'Is Banner Animated: ' + data.banner.is_animated;
+                document.getElementById('banner_color1').innerText = 'Banner Colors: ' + data.banner.color;
+                document.getElementById('Discord_profile_link').innerText = 'Discord Profile link: https://discordapp.com/users/' + data.id;
+  
+                var user_banner_color = data.banner.color;
+
+            // Change box color with banner user color
+            var boxElement = document.querySelector('.box');
+            boxElement.style.backgroundColor = user_banner_color;
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+</script>
+
+<body>
+    <header>
+        <a href="" class="home" title="Discord Lookup "><img src="logo.png" width="50px"></a>
+        <div class="logo" id="logo"> Discord Lookup
+        </div>
+    </header>
+    <h1>Discord Lookup </h1>
+    <h2>Here a discord tool to get information about a user with an id</h2>
+    <h3>tool made by <a href="Kio_qc" a>Kio_qc </a></h3>
+    <div class="indice1">right-click their profile picture and select Copy ID</div>
+    <div class="textbox"><sub></sub> the Discord ID here: <input type="text" id="your-input-field-id">
+        <button onclick="getUserInfo()">
+            <label for="Info">Get User Info </label>
+        </button>
+        <!-- ... -->
+    </div>
+
+
+    </button>
+    <div class="box">
+        <div class="user_id" id="user_id">User ID: </div>
+        <div class="tag" id="tag">Tag: </div>
+        <div class="badge" id="badge">Badge: </div>
+        <div class="avatar_id" id="avatar_id">Avatar ID: </div>
+        <div class="avatar_link" id="avatar_link">Avatar Link: </div>
+        <div class="is_Avatar_animated" id="is_avatar_animated">Is Avatar Animated: </div>
+        <div class="banner_id" id="banner_id">Banner ID: </div>
+        <div class="banner_link" id="banner_link">Banner Link: </div>
+        <div class="is_banner_animated" id="is_banner_animated">Banner ID: </div>
+        <div class="banner_color1" id="banner_color1">Banner Colors: </div>
+        <div class="Discord_profile_link" id="Discord_profile_link">Discord Profile link: </div>
+    </div>
+</body>
+
+</html>

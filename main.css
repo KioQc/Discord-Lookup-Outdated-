@@ -1,0 +1,47 @@
+body {
+    font-family: 'Urbanist', sans-serif;
+    margin: 0px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(30,33,36);
+}
+
+header {
+background-color: rgb(114,137,218);
+text-align: center;
+position: relative;
+}
+
+#logo {
+text-transform: uppercase;
+font-size: 175%;
+}
+
+
+.indice1 {
+    opacity: 0%;
+    
+}
+
+.indice1:hover {
+    opacity: 100%;
+    
+}
+
+.textbox.info {
+background-color: black;
+
+}
+
+
+.box {
+    min-width: 400px;
+    min-height: 215px;
+    width: auto;
+    height: auto;
+    border: 5px solid black;
+    padding: 10px;
+    margin: 20px;
+    margin-bottom: 50px;
+    background-color: #282b30;
+    overflow: auto;
+}
