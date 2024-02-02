@@ -34,6 +34,12 @@
                 document.getElementById('banner_color1').innerText = 'Banner Colors: ' + data.banner.color;
                 document.getElementById('Discord_profile_link').innerText = 'Discord Profile link: https://discordapp.com/users/' + data.id;
                 let date = new Date(data.created_at);
+                let dateDonnee = new Date(data.created_at);
+                let dateActuelle = new Date();
+                let difference = dateActuelle - dateDonnee;
+                let jours = Math.floor(difference / (1000 * 60 * 60 * 24));
+                let element = document.getElementById('joursPasses');
+                element.textContent = `Days Passed: ${jours}`;
                 let options = { year: 'numeric', month: 'short', day: 'numeric' };
                 let formattedDate = date.toLocaleDateString('en-CA', options);
                 document.getElementById('created_at').innerText = 'Created At: ' + formattedDate;
@@ -85,15 +91,19 @@
         <div class="user_id" id="user_id">User ID: </div>
         <div class="tag" id="tag">Tag: </div>
         <div class="badge" id="badge">Badge: </div>
+        <hr />
         <div class="avatar_id" id="avatar_id">Avatar ID: </div>
         <div class="avatar_link" id="avatar_link">Avatar Link: </div>
         <div class="is_Avatar_animated" id="is_avatar_animated">Is Avatar Animated: </div>
+        <hr />
         <div class="banner_id" id="banner_id">Banner ID: </div>
         <div class="banner_link" id="banner_link">Banner Link: </div>
         <div class="is_banner_animated" id="is_banner_animated">Banner ID: </div>
         <div class="banner_color1" id="banner_color1">Banner Colors: </div>
+        <hr />
         <div class="Discord_profile_link" id="Discord_profile_link">Discord Profile link: </div>
         <div class="created_at" id="created_at">Created At: </div>
+        <div id="joursPasses">Days Passed: </div>
     </div>
 
 
